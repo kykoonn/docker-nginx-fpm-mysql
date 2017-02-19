@@ -1,0 +1,29 @@
+nginx:
+  build: containers/nginx
+  ports:
+    - 80:80
+  links:
+    - phpfpm
+  volumes_from:
+    - phpfpm
+
+phpfpm:
+  build: containers/phpfpm
+  ports:
+    - 9000
+  links:
+    - mysql
+  volumes:
+    - ./data/www:/srv/www
+
+mysql:
+  image: mysql:5.7
+  environment:
+    - MYSQL_ROOT_PASSWORD=mysqlrootpass
+    - MYSQL_DATABASE=wordpress
+    - MYSQL_USER=mysqlwordpressuser
+    - MYSQL_PASSWORD=mysqlwordpresspass
+  volumes:
+    - ./data/mysql:/var/lib/mysql
+  ports:
+    - 3306
