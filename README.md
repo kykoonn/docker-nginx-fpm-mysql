@@ -12,7 +12,7 @@ The database will be stored persistantly in data/db.
 
 Below you will find how to put a wordpress in it as example.
 
-    git clone https://git.poneytelecom.org/kykoonn/docker-nginx-fpm-mysql.git
+    git clone git@github.com:kykoonn/docker-nginx-fpm-mysql.git 
     cd docker-nginx-fpm-mysql
     docker-compose build
     docker-compose up
